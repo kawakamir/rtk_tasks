@@ -18,10 +18,8 @@ const Login = () => {
   const authen = useSelector(selectAuthen);
   const isLoginView = useSelector(selectIsLoginView);
   const btnDisabler = authen.username === "" || authen.password === "";
-  console.log(btnDisabler);
 
   const login = async () => {
-    console.log("login");
     if (isLoginView) {
       await dispatch(fetchAsyncLogin(authen));
     } else {
@@ -52,7 +50,7 @@ const Login = () => {
           className={styles.inputLog}
           name="password"
           placeholder=""
-          onChange={(e) => dispatch(editUsername(e.target.value))}
+          onChange={(e) => dispatch(editPassword(e.target.value))}
           required
         />
         <div className={styles.switch}>
@@ -62,7 +60,7 @@ const Login = () => {
             color="primary"
             onClick={login}
           >
-            {isLoginView ? "login" : "Create"}
+            {isLoginView ? "Login" : "Create"}
           </Button>
         </div>
         <span
